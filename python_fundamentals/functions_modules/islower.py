@@ -1,4 +1,4 @@
 #!/usr/bin/env python3
 
-def isLower(c):
+def islower(c):
     return 97 <= ord(c) <= 122
