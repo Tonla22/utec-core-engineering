@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Pedir mensaje del commit
+read -rp "📝 Nombre del commit: " mensaje
+
+# Validar que no esté vacío
+if [ -z "$mensaje" ]; then
+    echo "❌ El mensaje no puede estar vacío."
+    exit 1
+fi
+
+# Ejecutar comandos Git
+git add . &&
+git commit -m "$mensaje" &&
+git push
+
+echo "✅ Cambios subidos correctamente!"
