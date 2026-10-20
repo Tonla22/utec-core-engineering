@@ -10,4 +10,3 @@ def add_tuple(tuple_a=(), tuple_b=()):
     d = tuple_b[1] if len(tuple_b) > 1 else 0
 
     return (a + c, b + d)
-EOF
