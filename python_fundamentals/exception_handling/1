@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Verificar que estamos dentro de un repositorio Git
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    echo "Error: No estás dentro de un repositorio Git."
+    exit 1
+fi
+
+# Solicitar mensaje del commit
+read -r -p "Ingrese el nombre del commit: " commit_msg
+
+# Verificar que no esté vacío
+if [ -z "$commit_msg" ]; then
+    echo "Error: El mensaje del commit no puede estar vacío."
+    exit 1
+fi
+
+# Ejecutar comandos Git
+echo "Agregando archivos..."
+git add . || exit 1
+
+echo "Creando commit..."
+git commit -m "$commit_msg" || exit 1
+
+echo "Subiendo cambios a GitHub..."
+git push || exit 1
+
+echo "Proceso completado correctamente."
