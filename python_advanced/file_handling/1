@@ -15,19 +15,6 @@ if [ -z "$commit_msg" ]; then
     exit 1
 fi
 
-# Solicitar archivo para otorgar permisos de ejecución
-read -r -p "Ingrese el nombre del archivo para chmod +x (Enter para omitir): " archivo
-
-if [ -n "$archivo" ]; then
-    if [ -f "$archivo" ]; then
-        echo "Otorgando permisos de ejecución a $archivo..."
-        chmod +x -- "$archivo" || exit 1
-    else
-        echo "Error: El archivo $archivo no existe o no es un archivo regular."
-        exit 1
-    fi
-fi
-
 # Ejecutar comandos Git
 echo "Agregando archivos..."
 git add . || exit 1
